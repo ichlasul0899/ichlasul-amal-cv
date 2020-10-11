@@ -1,24 +1,40 @@
 import React from 'react';
 import './App.css';
 import Navbar from './component/Navbar';
-import Slider from './component/Slider';
-import About from './component/About';
-import Portfolio from './component/Portfolio';
-import Contact from './component/Contact';
-import Footer from './component/Footer';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import routes from './config/route';
+import Footer from './component/Footer'
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      {/* Skip Dulu Slider nya karena menggunakan jQuery */}
-      <Slider />
-      <About />
-      <Portfolio />
-      <Contact />
-      <Footer />
-    </div>
+    <Router>
+      <div>
+        <Navbar />
+
+        <Switch>
+          {routes.map((route, i) => (
+            <RouteWithSubRoutes key={i} {...route} />
+          ))}
+        </Switch>
+
+        <Footer />
+      </div>
+    </Router>
   );
 }
+
+function RouteWithSubRoutes(route) {
+  return (
+    <Route
+      path={route.path}
+      render={(props) => (
+        // pass the sub-routes down to keep nesting
+        <route.component {...props} routes={route.routes} />
+      )}
+    />
+  );
+}
+
+
 
 export default App;

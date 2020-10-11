@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
-const CardPorto = ({ data, index }) => {
-  console.log(data.srcImage, "====>", data.title)
+const CardPorto = ({ data }) => {
+  // console.log(data, "=", data.srcImage, "====>", data.title)
   return (
     <div className="col m4 s12">
       <div className="card">
@@ -13,7 +14,7 @@ const CardPorto = ({ data, index }) => {
           <p>{data.desc}</p>
         </div>
         <div className="card-action">
-          <a href="/">This is a link</a>
+          <Link to={`/portfolio/${data.id}`} >More Detail</Link>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import ProgressBar from './ProgressBar';
 
-const About = () => {
+const AboutSub = () => {
 
   const skill = [
     {
@@ -43,6 +43,6 @@ const About = () => {
   )
 }
 
-export default About
+export default AboutSub
 
             
